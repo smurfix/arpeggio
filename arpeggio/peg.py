@@ -158,7 +158,9 @@ class PEGVisitor(PTNodeVisitor):
             if rule.rule_name == self.comment_rule_name:
                 comment_rule = _resolve(rule)
 
-        assert root_rule, "Root rule not found!"
+        assert root_rule, f"Root rule {self.root_rule_name !r} not found!"
+        if self.comment_rule_name and not comment_rule:
+            assert comment_rule, f"Comment rule {self.comment_rule_name !r} not found!"
         return root_rule, comment_rule
 
     def visit_rule(self, node, children):
