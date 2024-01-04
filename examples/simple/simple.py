@@ -16,7 +16,8 @@ from arpeggio import *
 from arpeggio import RegExMatch as _
 
 # Grammar
-def comment():          return [_(r"//.*"), _(r"/\*.*\*/")]
+def comment():          return [_(r"//.*", multiline=False), _(r"/\*.*\*/",
+    multiline=True)]
 def literal():          return _(r'\d*\.\d*|\d+|".*?"')
 def symbol():           return _(r"\w+")
 def operator():         return _(r"\+|\-|\*|\/|\=\=")
@@ -24,7 +25,7 @@ def operation():        return symbol, operator, [literal, functioncall]
 def expression():       return [literal, operation, functioncall]
 def expressionlist():   return expression, ZeroOrMore(",", expression)
 def returnstatement():  return Kwd("return"), expression
-def ifstatement():      return Kwd("if"), "(", expression, ")", block, Kwd("else"), block
+def ifstatement():      return Kwd("if"), "(", expression, ")", block, Optional(Kwd("else"), block)
 def statement():        return [ifstatement, returnstatement], ";"
 def block():            return "{", OneOrMore(statement), "}"
 def parameterlist():    return "(", symbol, ZeroOrMore(",", symbol), ")"
