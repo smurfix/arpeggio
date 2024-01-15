@@ -6,8 +6,8 @@ Build-Depends: dh-python, python3-setuptools, python3-all, debhelper (>= 13),
   python3-mkdocs,
   python3-mike,
   python3-flit,
-  flit (<< 4),
   flit (>= 3.8.0),
+  flit (<< 4),
   python3-flit-scm,
 Standards-Version: 3.9.6
 Homepage: 
