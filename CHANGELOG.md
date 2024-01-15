@@ -15,6 +15,8 @@ please take a look at related PRs and issues and see if the change affects you.
 
 ## [Unreleased]
 
+- Fix parsing of regex rules in peg and cleanpeg syntaxes ([#125]). Thanks
+  @smurfix for reporting ([#123]).
 - **(BIC)** Removed support for Python 3.6. The minimal supported version is 3.7.
 - Added sypport for Python 3.12.
 - Migrated to pyproject.toml for project configuration.
@@ -66,8 +68,12 @@ please take a look at related PRs and issues and see if the change affects you.
 - fix: #98 suppressed match in zero-or-more [#98]. Thanks @vpavlu for reporting
   the issue.
 
-- fix: empty comments in .peg files hid the next line, commented or not.
+- fix: empty comments in .peg files hid the next line, commented or not
+  ([#124]). Thanks @smurfix for the fix.
 
+[#125]: https://github.com/textX/Arpeggio/issues/125
+[#124]: https://github.com/textX/Arpeggio/pull/124
+[#123]: https://github.com/textX/Arpeggio/discussions/123
 [#101]: https://github.com/textX/Arpeggio/issues/101
 [#98]: https://github.com/textX/Arpeggio/issues/98
 [#96]: https://github.com/textX/Arpeggio/issues/96
