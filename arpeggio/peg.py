@@ -122,7 +122,7 @@ class PEGVisitor(PTNodeVisitor):
                         self.dprint(f"Resolving crossref {rule_name}")
 
                     resolved_rule = get_rule_by_name(rule_name)
-                    while type(resolved_rule) is CrossRef:
+                    while isinstance(resolved_rule, CrossRef):
                         target_rule = resolved_rule.target_rule_name
                         resolved_rule = get_rule_by_name(target_rule)
 

@@ -162,7 +162,7 @@ class BibTeXVisitor(PTNodeVisitor):
         Just returns list of child nodes (bibentries).
         """
         # Return only dict nodes
-        return [x for x in children if type(x) is dict]
+        return [x for x in children if isinstance(x, dict)]
 
     def visit_bibentry(self, node, children):
         """

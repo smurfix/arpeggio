@@ -52,7 +52,7 @@ class BibtexVisitor(PTNodeVisitor):
             print("Processing Bibfile")
 
         # Return only dict nodes
-        return [x for x in children if type(x) is dict]
+        return [x for x in children if isinstance(x, dict)]
 
     def visit_bibentry(self, node, children):
         """

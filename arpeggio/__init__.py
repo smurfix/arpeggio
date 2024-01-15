@@ -115,7 +115,7 @@ def flatten(_iterable):
     '''Flattening of python iterables.'''
     result = []
     for e in _iterable:
-        if hasattr(e, "__iter__") and type(e) not in [str, NonTerminal]:
+        if hasattr(e, "__iter__") and not isinstance(e, (str, NonTerminal)):
             result.extend(flatten(e))
         else:
             result.append(e)
@@ -885,8 +885,8 @@ class StrMatch(Match):
                             parser.context(len(self.to_match))))
             parser.position += len(self.to_match)
 
-            # If this match is inside sequence than mark for suppression
-            suppress = type(parser.last_pexpression) is Sequence
+            # If this match is inside sequence then mark for suppression
+            suppress = isinstance(parser.last_pexpression, Sequence)
 
             return Terminal(self, c_pos, self.to_match, suppress=suppress)
         else:
