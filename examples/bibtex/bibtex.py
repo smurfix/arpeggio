@@ -14,6 +14,9 @@ import sys
 from arpeggio import *
 from arpeggio import RegExMatch as _
 
+class __(_):
+    suppress = True
+
 
 # Grammar
 def bibfile():                  return ZeroOrMore([comment_entry, bibentry, comment]), EOF
@@ -26,7 +29,7 @@ def fieldvalue_quotes():        return '"', fieldvalue_quoted_content, '"'
 
 # Lexical rules
 def fieldname():                return _(r'[-\w]+')
-def comment():                  return _(r'[^@]+')
+def comment():                  return __(r'[^@]+')
 def bibtype():                  return _(r'@\w+')
 def bibkey():                   return _(r'[^\s,]+')
 def fieldvalue_quoted_content():    return _(r'((\\")|[^"])*')
